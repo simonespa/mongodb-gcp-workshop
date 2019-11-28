@@ -1,5 +1,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const index = require('./controllers/index');
+const notFound = require('./controllers/notFound');
+const error = require('./controllers/error');
 
 const app = express();
 const port = 8080;
@@ -21,27 +24,10 @@ app.locals.layout = false;
 app.set('views', 'src/views');
 app.use('/assets', express.static('assets'));
 
-app.get('/', (request, response, next) => response.status(200).render('index'));
-app.get('*', (request, response, next) => next(new Error('PAGE_NOT_FOUND')));
+app.get('/', index);
+app.get('*', notFound);
 
-app.use((error, request, response, next) => {
-  // see https://expressjs.com/en/guide/error-handling.html
-  if (response.headersSent) {
-    return next(error);
-  }
-
-  if (error.message === 'PAGE_NOT_FOUND') {
-    response.locals.title = 'Page not found';
-    response.locals.content = `Can't find ${request.path}`;
-    response.status(404);
-  } else {
-    response.locals.title = 'Error';
-    response.locals.content = error.message;
-    response.status(500);
-  }
-
-  response.render('other');
-});
+app.use(error);
 
 app.listen(port, error => {
   if (error) {
