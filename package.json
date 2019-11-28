@@ -4,8 +4,8 @@
   "description": "London MongoDB Atlas on GCP competition - November 27 2019 - Google London",
   "main": "src/server.js",
   "scripts": {
-    "watch": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "watch": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json nodemon src/server.js",
+    "start": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json node src/server.js"
   },
   "repository": {
     "type": "git",
