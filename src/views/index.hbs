@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
   {{> commonHeaders }}
-  <title>Entity Analyser | Homme</title>
+  <title>Text Analyser | Homme</title>
 </head>
 <body>
-  <h1>MongoDB</h1>
+  <h1>Text Analyser</h1>
+  <p>Paste the text you want to analyse here.</p>
+  <form method="POST" action="/">
+    <textarea name="text" id="" cols="100" rows="20"></textarea>
+    <div />
+    <input type="submit" />
+  </form>
+  <h3>Parsed text</h3>
+  <p>{{text}}</p>
+  <h3>Detected language</h3>
+  <p>{{language}}</p>
+  <h3>Wikipedia entities</h3>
+  <ul>
+    {{#entities}}
+      <li><a href="{{url}}" target="_blank">{{name}}</a></li>
+    {{/entities}}
+  </ul>
 </body>
 </html>

@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const cacheControl = require('./controllers/cacheControl');
 const index = require('./controllers/index');
+const submitText = require('./controllers/submitText');
 const notFound = require('./controllers/notFound');
 const error = require('./controllers/error');
 
@@ -25,9 +26,12 @@ app.locals.layout = false;
 app.set('views', 'src/views');
 app.use('/assets', express.static('assets'));
 
+app.use(express.urlencoded());
+
 app.use(cacheControl);
 
 app.get('/', index);
+app.post('/', submitText);
 app.get('*', notFound);
 
 app.use(error);
