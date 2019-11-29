@@ -1,4 +1,4 @@
-const languageApi = require("@google-cloud/language");
+const languageApi = require('@google-cloud/language');
 
 const type = 'PLAIN_TEXT';
 

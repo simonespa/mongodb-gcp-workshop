@@ -7,7 +7,7 @@ const notFound = require('./controllers/notFound');
 const error = require('./controllers/error');
 
 const app = express();
-const port = 8080;
+const port = 8088;
 
 // Hides the header that exposes Express as a server
 app.disable('x-powered-by');

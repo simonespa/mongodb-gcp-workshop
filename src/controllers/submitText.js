@@ -1,7 +1,10 @@
 const { analyzeEntitiesFromText } = require('../gcp');
+const { normalise } = require('../text');
 
 module.exports = async (request, response, next) => {
   const { text } = request.body;
+
+  const normalisedText = normalise(text);
   
   try {
     const { language, entities } = await analyzeEntitiesFromText(text);
