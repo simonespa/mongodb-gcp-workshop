@@ -1,5 +1,9 @@
 # London MongoDB Atlas on GCP workshop competition
 
+## Getting started
+1. `npm install`
+1. Create 
+
 November 27 2019 - Google London - https://mdbgcp.splashthat.com/
 
 ## References

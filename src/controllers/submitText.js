@@ -1,16 +1,18 @@
-const { analyzeEntitiesFromText } = require('../gcp');
-const { normalise } = require('../text');
+const { getDocument, storeDocument } = require('../helper');
 
 module.exports = async (request, response, next) => {
   const { text } = request.body;
 
-  const normalisedText = normalise(text);
-  
   try {
-    const { language, entities } = await analyzeEntitiesFromText(text);
+    let document = await getDocument(request.app.locals.mongodb, text);
+
+    if (!document) {
+      document = await storeDocument(request.app.locals.mongodb, text);
+    }
+
     response.locals.text = text;
-    response.locals.language = language;
-    response.locals.entities = entities;
+    response.locals.language = document.language;
+    response.locals.entities = document.entities;
     response.status(200).render('index');
   } catch (error) {
     next(error);

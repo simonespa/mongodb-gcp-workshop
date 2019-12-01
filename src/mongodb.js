@@ -1,28 +1,13 @@
-const MongoClient = require('mongodb').MongoClient;
+const DATABASE = process.env.MONGODB_DATABASE;
+const COLLECTION = process.env.MONGODB_COLLECTION;
 
-const uri = process.env.MONGODB_URI;
+async function findDocumentById(mongodb, documentId) {
+  return await mongodb.db(DATABASE).collection(COLLECTION).findOne({_id: documentId});
+}
 
-const options = { useNewUrlParser: true, useUnifiedTopology: true };
+async function insertDocument(mongodb, document) {
+  await mongodb.db(DATABASE).collection(COLLECTION).insertOne(document);
+  return document
+}
 
-const databaseName = 'sample_mflix';
-const collectionName = 'movies';
-
-(async () => {
-  let client;
-
-  try {
-    client = await MongoClient.connect(uri, options);
-    const collection = await client.db(databaseName).collection(collectionName);
-    const results = await collection.find({}, { limit: 10, sort: ['title']}).toArray();
-    const titles = results.map((movie) => {
-      return movie.title || '';
-    });
-    console.log(titles);
-  } catch (error) {
-    console.log(error.message);
-  } finally {
-    if (client) {
-      client.close();
-    }
-  }
-})();
+module.exports = { findDocumentById, insertDocument };
