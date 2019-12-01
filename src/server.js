@@ -27,7 +27,7 @@ app.locals.layout = false;
 app.set("views", "src/views");
 app.use("/assets", express.static("assets"));
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cacheControl);
 
