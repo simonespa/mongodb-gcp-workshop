@@ -3,11 +3,11 @@
 November 27 2019 - Google London - https://mdbgcp.splashthat.com/
 
 ## Getting started
-1. `npm install`
+1. Execute `npm install`
 1. Create a "Service Account Key" credential in GCP as described [here](https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2/blob/master/Guides/GCPProjectAndVisionSetup.md)
-1. Download the credentials the roo folder, in a file named `gcpcreds.json`
+1. Download the GCP credential to the root folder of the project, in a file named `gcpcreds.json`
 1. Export `MONGODB_DATABASE` and `MONGODB_COLLECTION` environment variables
-1. Run `npm watch` for development or `npm start` for production
+1. Execute `npm watch` for development or `npm start` for production
 
 ## References
 * https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2
