@@ -1,14 +1,14 @@
-const languageApi = require('@google-cloud/language');
+import languageApi from '@google-cloud/language';
 
 const type = 'PLAIN_TEXT';
 
 /**
  * Analyze the text detecting the language and entities with a Wikipedia entry.
- * 
+ *
  * @param {string} content the text to analyze
  * @returns {object}
  */
-async function analyzeEntitiesFromText(content) {
+export async function analyzeEntitiesFromText(content) {
   // Creates a client
   const client = new languageApi.LanguageServiceClient();
 
@@ -17,10 +17,10 @@ async function analyzeEntitiesFromText(content) {
 
   // Detects entities in the document
   const [result] = await client.analyzeEntities({ document });
-  
+
   // Gets the detected language and entities
   const { language, entities } = result;
-  
+
   // Filters the entity collecting only the ones with a Wikipedia URL,
   // and then maps those information in a new object
   const wikipediaEntities = entities
@@ -32,4 +32,3 @@ async function analyzeEntitiesFromText(content) {
   return { language, entities: wikipediaEntities };
 }
 
-module.exports = { analyzeEntitiesFromText }

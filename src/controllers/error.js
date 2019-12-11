@@ -1,4 +1,4 @@
-module.exports = (error, request, response, next) => {
+export default function error(error, request, response, next) {
   // see https://expressjs.com/en/guide/error-handling.html
   if (response.headersSent) {
     return next(error);
@@ -15,4 +15,4 @@ module.exports = (error, request, response, next) => {
   }
 
   response.render('other');
-};
+}

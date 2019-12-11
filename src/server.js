@@ -1,11 +1,11 @@
-const express = require("express");
-const exphbs = require("express-handlebars");
-const MongoClient = require("mongodb").MongoClient;
-const cacheControl = require("./controllers/cacheControl");
-const index = require("./controllers/index");
-const submitText = require("./controllers/submitText");
-const notFound = require("./controllers/notFound");
-const error = require("./controllers/error");
+import express from 'express';
+import exphbs from 'express-handlebars';
+import { MongoClient } from 'mongodb';
+import cacheControl from './controllers/cacheControl';
+import index from './controllers/index';
+import submitText from './controllers/submitText';
+import notFound from './controllers/notFound';
+import error from './controllers/error';
 
 const app = express();
 const port = 8088;
