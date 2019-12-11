@@ -6,8 +6,7 @@
   "scripts": {
     "start": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json node dist/server.js",
     "watch": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json webpack --mode development --watch",
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
