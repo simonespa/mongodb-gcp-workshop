@@ -2,10 +2,11 @@
   "name": "mongodb-gcp-competition",
   "version": "1.0.0",
   "description": "London MongoDB Atlas on GCP competition - November 27 2019 - Google London",
-  "main": "src/server.js",
+  "main": "dist/server.js",
   "scripts": {
-    "watch": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json nodemon src/server.js",
-    "start": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json node src/server.js"
+    "start": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json node dist/server.js",
+    "watch": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,15 @@
     "mongodb": "^3.3.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.1"
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "core-js": "^3.4.7",
+    "nodemon-webpack-plugin": "^4.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
   }
 }

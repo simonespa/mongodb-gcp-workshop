@@ -2,11 +2,22 @@
 
 November 27 2019 - Google London - https://mdbgcp.splashthat.com/
 
+This project runs Express server which integrates with "mongodb" and "gcp" NPM libraries. It uses the Cloud Natural Language API to return Wikipedia links of the entities extracted from the text entered by the user. The response is then stored in MongoDB Atlas which works as a caching layer. The ID of each entry is the SHA 256 fingerprint of the normalised version of the text itself (lower case, stripped of all spaces).
+
+## Pre-requisites
+* Have a GCP account
+* Have the GCP Cloud Natural Language API enabled
+* Have "Service Account Key" credential generated
+* Have a MongoDB Atlas account and a cluster deployed
+
 ## Getting started
-1. Execute `npm install`
 1. Create a "Service Account Key" credential in GCP as described [here](https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2/blob/master/Guides/GCPProjectAndVisionSetup.md)
-1. Download the GCP credential to the root folder of the project, in a file named `gcpcreds.json`
-1. Export `MONGODB_DATABASE` and `MONGODB_COLLECTION` environment variables
+1. Download the GCP credential to the root folder of the project, in a file named `gcpcreds.json`. Without doing so, you'll get the following error: `400 undefined: Getting metadata from plugin failed with error: invalid_grant: Robot is disabled.`
+1. Export the following environment variables:
+  * `MONGODB_DATABASE`: the database name
+  * `MONGODB_COLLECTION`: the collection name
+  * `MONGODB_URI`: the connection URI that you can get from your MongoDB Atlas account.
+1. Execute `npm install`
 1. Execute `npm watch` for development or `npm start` for production
 
 ## References

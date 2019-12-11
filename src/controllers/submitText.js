@@ -1,6 +1,6 @@
-const { getDocument, storeDocument } = require('../helper');
+import { getDocument, storeDocument } from '../helper';
 
-module.exports = async (request, response, next) => {
+export default async function submitText(request, response, next) {
   const { text } = request.body;
 
   try {
@@ -17,4 +17,4 @@ module.exports = async (request, response, next) => {
   } catch (error) {
     next(error);
   }
-};
+}

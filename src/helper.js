@@ -1,5 +1,5 @@
-const { analyzeEntitiesFromText } = require('./gcp');
-const { findDocumentById, insertDocument } = require('./mongodb');
+import { analyzeEntitiesFromText } from './gcp';
+import { findDocumentById, insertDocument } from './mongodb';
 
 const crypto = require('crypto');
 
@@ -16,16 +16,14 @@ function normalise(text = '') {
     .digest('hex');
 }
 
-async function getDocument(mongodb, text) {
+export async function getDocument(mongodb, text) {
   const documentId = normalise(text);
   return await findDocumentById(mongodb, documentId);
 }
 
-async function storeDocument(mongodb, text) {
+export async function storeDocument(mongodb, text) {
   const documentId = normalise(text);
   const { language, entities } = await analyzeEntitiesFromText(text);
   const document = { _id: documentId, language, entities };
   return await insertDocument(mongodb, document);
 }
-
-module.exports = { getDocument, storeDocument };
