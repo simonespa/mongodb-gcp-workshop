@@ -12,13 +12,13 @@ This project runs Express server which integrates with "mongodb" and "gcp" NPM l
 
 ## Getting started
 1. Create a "Service Account Key" credential in GCP as described [here](https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2/blob/master/Guides/GCPProjectAndVisionSetup.md)
-1. Download the GCP credential to the root folder of the project, in a file named `gcpcreds.json`. Without doing so, you'll get the following error: `400 undefined: Getting metadata from plugin failed with error: invalid_grant: Robot is disabled.`
-1. Export the following environment variables:
+2. Download the GCP credential to the root folder of the project, in a file named `gcpcreds.json`. Without doing so, you'll get the following error: `400 undefined: Getting metadata from plugin failed with error: invalid_grant: Robot is disabled.`
+3. Export the following environment variables:
   * `MONGODB_DATABASE`: the database name
   * `MONGODB_COLLECTION`: the collection name
   * `MONGODB_URI`: the connection URI that you can get from your MongoDB Atlas account.
-1. Execute `npm install`
-1. Execute `npm watch` for development or `npm start` for production
+4. Execute `npm install`
+5. Execute `npm watch` for development or `npm start` for production
 
 ## References
 * https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2
