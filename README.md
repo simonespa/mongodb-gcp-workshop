@@ -1,5 +1,7 @@
 # London MongoDB Atlas on GCP workshop competition
 
+[![CircleCI](https://circleci.com/gh/simonespa/mongodb-gcp-competition.svg?style=svg)](https://circleci.com/gh/simonespa/mongodb-gcp-competition)
+
 November 27 2019 - Google London - https://mdbgcp.splashthat.com/
 
 This project runs Express server which integrates with "mongodb" and "gcp" NPM libraries. It uses the Cloud Natural Language API to return Wikipedia links of the entities extracted from the text entered by the user. The response is then stored in MongoDB Atlas which works as a caching layer. The ID of each entry is the SHA 256 fingerprint of the normalised version of the text itself (lower case, stripped of all spaces).
@@ -23,6 +25,10 @@ This project runs Express server which integrates with "mongodb" and "gcp" NPM l
 
 4. Execute `npm install`
 5. Execute `npm watch` for development or `npm start` for production
+
+## Development
+
+CI: https://circleci.com/gh/simonespa/mongodb-gcp-competition
 
 ## References
 
