@@ -24,11 +24,13 @@ export async function analyzeEntitiesFromText(content) {
   // Filters the entity collecting only the ones with a Wikipedia URL,
   // and then maps those information in a new object
   const wikipediaEntities = entities
-    .filter(entity =>
+    .filter((entity) =>
       entity.metadata.wikipedia_url ? entity.metadata.wikipedia_url : null
     )
-    .map(entity => ({ name: entity.name, url: entity.metadata.wikipedia_url }));
+    .map((entity) => ({
+      name: entity.name,
+      url: entity.metadata.wikipedia_url
+    }));
 
   return { language, entities: wikipediaEntities };
 }
-
