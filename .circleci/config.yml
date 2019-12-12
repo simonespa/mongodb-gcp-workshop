@@ -19,9 +19,6 @@ jobs:
       - checkout
 
       - restore_cache:
-        key: v1-dependencies-{{ checksum "package.json" }}
-
-      - restore_cache:
         keys:
           # Find a cache corresponding to this specific package-lock.json checksum
           # when this file is changed, this key will fail
