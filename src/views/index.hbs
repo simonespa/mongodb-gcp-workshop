@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   {{> commonHeaders }}
-  <title>Text Analyser | Homme</title>
+  <title>Text Analyser | Home</title>
 </head>
 <body>
   <h1>Text Analyser</h1>
@@ -12,8 +12,10 @@
     <div />
     <input type="submit" />
   </form>
-  <h3>Parsed text</h3>
-  <p>{{text}}</p>
+  <h3>Play text</h3>
+  <audio controls src="/play/{{textId}}">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
   <h3>Detected language</h3>
   <p>{{language}}</p>
   <h3>Wikipedia entities</h3>

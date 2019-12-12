@@ -31,3 +31,4 @@ This project runs Express server which integrates with "mongodb" and "gcp" NPM l
 * https://cloud.google.com/natural-language/
 * https://cloud.google.com/natural-language/docs/reference/rest/?apix=true
 * https://googleapis.dev/nodejs/language/latest/index.html
+* https://mongodb.github.io/node-mongodb-native/3.0/tutorials/gridfs/streaming/
