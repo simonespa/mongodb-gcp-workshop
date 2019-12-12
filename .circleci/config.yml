@@ -38,4 +38,4 @@ jobs:
 
       - run:
           name: Run tests
-          command: npm run test
+          command: node --version
