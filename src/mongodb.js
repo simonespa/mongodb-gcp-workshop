@@ -1,4 +1,4 @@
-import { GridFSBucket } from "mongodb";
+import { GridFSBucket } from 'mongodb';
 
 const DATABASE = process.env.MONGODB_DATABASE;
 const COLLECTION = process.env.MONGODB_COLLECTION;
@@ -23,7 +23,8 @@ export async function uploadAudio(mongodb, id) {
   const bucket = new GridFSBucket(db);
   const filePath = `/tmp/${id}.mp3`;
 
-  fs.createReadStream(filePath).pipe(bucket.openUploadStreamWithId(id, `${id}.mp3`))
+  fs.createReadStream(filePath)
+    .pipe(bucket.openUploadStreamWithId(id, `${id}.mp3`))
     .on('error', (error) => {
       throw error;
     });

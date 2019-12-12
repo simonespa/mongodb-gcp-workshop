@@ -33,14 +33,18 @@ export async function storeAudioToCache(mongodb, id, audio) {
   const gcpRequest = {
     input: { text },
     // Select the language and SSML Voice Gender (optional)
-    voice: { languageCode: "en", ssmlGender: "NEUTRAL" },
+    voice: { languageCode: 'en', ssmlGender: 'NEUTRAL' },
     // Select the type of audio encoding
-    audioConfig: { audioEncoding: "MP3" }
+    audioConfig: { audioEncoding: 'MP3' }
   };
 
   // Performs the Text-to-Speech request
   const [gcpResponse] = await client.synthesizeSpeech(gcpRequest);
   // Write the binary audio content to a local file
   const writeFile = util.promisify(fs.writeFile);
-  await writeFile(`/tmp/${document['_id']}.mp3`, gcpResponse.audioContent, "binary");
+  await writeFile(
+    `/tmp/${document['_id']}.mp3`,
+    gcpResponse.audioContent,
+    'binary'
+  );
 }

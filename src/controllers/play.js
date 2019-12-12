@@ -1,6 +1,6 @@
 import { GridFSBucket } from 'mongodb';
 
-export default async function play(request, response, next) {
+export default async function play(request, response) {
   try {
     const db = request.app.locals.mongodb.db(process.env.MONGODB_DATABASE);
 

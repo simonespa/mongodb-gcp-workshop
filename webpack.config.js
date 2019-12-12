@@ -4,7 +4,6 @@ const NodemonPlugin = require('nodemon-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env, options) => {
-  const isProdMode = options.mode === 'production';
   const isDevMode = options.mode === 'development';
 
   const webpackConfig = {
@@ -26,9 +25,11 @@ module.exports = (env, options) => {
         }
       ]
     },
-    plugins: [new CleanWebpackPlugin({
-      verbose: true
-    })]
+    plugins: [
+      new CleanWebpackPlugin({
+        verbose: true
+      })
+    ]
   };
 
   if (isDevMode) {

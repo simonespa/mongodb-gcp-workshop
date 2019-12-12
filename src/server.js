@@ -12,21 +12,21 @@ const app = express();
 const port = 8088;
 
 // Hides the header that exposes Express as a server
-app.disable("x-powered-by");
+app.disable('x-powered-by');
 
 // Setup the engine using express handlebars
 app.engine(
-  "hbs",
+  'hbs',
   exphbs({
-    extname: "hbs"
+    extname: 'hbs'
   })
 );
-app.set("view engine", "hbs");
+app.set('view engine', 'hbs');
 // To disable the use of layouts. See https://github.com/ericf/express-handlebars#layouts.
 app.locals.layout = false;
 
-app.set("views", "src/views");
-app.use("/assets", express.static("assets"));
+app.set('views', 'src/views');
+app.use('/assets', express.static('assets'));
 
 app.use(express.urlencoded({ extended: true }));
 

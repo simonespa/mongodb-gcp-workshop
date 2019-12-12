@@ -1,0 +1,10 @@
+.github
+dist
+node_modules
+.eslintcache
+.eslintignore
+.gitignore
+.prettierignore
+gcpcreds.json
+LICENSE
+package-lock.json
