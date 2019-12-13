@@ -26,10 +26,6 @@ This project runs Express server which integrates with "mongodb" and "gcp" NPM l
 4. Execute `npm install`
 5. Execute `npm watch` for development or `npm start` for production
 
-## Development
-
-CI: https://circleci.com/gh/simonespa/mongodb-gcp-competition
-
 ## References
 
 - https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2

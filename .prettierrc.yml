@@ -2,3 +2,7 @@ singleQuote: true
 quoteProps: consistent
 arrowParens: always
 endOfLine: lf
+overrides:
+  - files: '*.hbs'
+    options:
+      parser: html

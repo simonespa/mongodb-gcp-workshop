@@ -1,4 +1,5 @@
-import languageApi from '@google-cloud/language';
+import { LanguageServiceClient } from '@google-cloud/language';
+import { TextToSpeechClient } from '@google-cloud/text-to-speech';
 
 const type = 'PLAIN_TEXT';
 
@@ -8,9 +9,9 @@ const type = 'PLAIN_TEXT';
  * @param {string} content the text to analyze
  * @returns {object}
  */
-export async function analyzeEntitiesFromText(content) {
+export async function analyzeEntities(content) {
   // Creates a client
-  const client = new languageApi.LanguageServiceClient();
+  const client = new LanguageServiceClient();
 
   // Prepares a document, representing the provided text
   const document = { content, type };
@@ -33,4 +34,23 @@ export async function analyzeEntitiesFromText(content) {
     }));
 
   return { language, entities: wikipediaEntities };
+}
+
+export async function synthesizeSpeech(id, text, languageCode) {
+  // Creates a client
+  const client = new TextToSpeechClient();
+
+  // Construct the request
+  const request = {
+    input: { text },
+    // Select the language and SSML Voice Gender (optional)
+    voice: { languageCode, ssmlGender: 'NEUTRAL' },
+    // Select the type of audio encoding
+    audioConfig: { audioEncoding: 'MP3' }
+  };
+
+  // Performs the Text-to-Speech request
+  const [response] = await client.synthesizeSpeech(request);
+
+  return response.audioContent;
 }

@@ -2,8 +2,9 @@ import express from 'express';
 import exphbs from 'express-handlebars';
 import { MongoClient } from 'mongodb';
 import cacheControl from './controllers/cacheControl';
-import index from './controllers/index';
-import submitText from './controllers/submitText';
+import indexGet from './controllers/indexGet';
+import indexPost from './controllers/indexPost';
+import play from './controllers/play';
 import notFound from './controllers/notFound';
 import error from './controllers/error';
 
@@ -31,8 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cacheControl);
 
-app.get('/', index);
-app.post('/', submitText);
+app.get('/', indexGet);
+app.post('/', indexPost);
+app.get('/play/:id', play);
 app.get('*', notFound);
 
 app.use(error);

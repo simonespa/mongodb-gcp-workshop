@@ -1,9 +1,13 @@
-import { analyzeEntitiesFromText } from './gcp';
-import { findDocumentById, insertDocument } from './mongodb';
+import crypto from 'crypto';
+import { analyzeEntities, synthesizeSpeech } from './gcp';
+import {
+  findDocumentById,
+  insertDocument,
+  openUploadStreamWithId,
+  openDownloadStream
+} from './mongodb';
 
-const crypto = require('crypto');
-
-function normalise(text = '') {
+export function getId(text) {
   return crypto
     .createHash('sha256')
     .update(
@@ -16,14 +20,22 @@ function normalise(text = '') {
     .digest('hex');
 }
 
-export async function getDocument(mongodb, text) {
-  const documentId = normalise(text);
-  return await findDocumentById(mongodb, documentId);
+export async function getDocumentFromCache(mongodb, id) {
+  return await findDocumentById(mongodb, id);
 }
 
-export async function storeDocument(mongodb, text) {
-  const documentId = normalise(text);
-  const { language, entities } = await analyzeEntitiesFromText(text);
-  const document = { _id: documentId, language, entities };
+export async function storeDocumentToCache(mongodb, id, text) {
+  const { language, entities } = await analyzeEntities(text);
+  const document = { _id: id, language, entities, text };
   return await insertDocument(mongodb, document);
+}
+
+export async function generateAndStoreAudioToCache(mongodb, document) {
+  const { _id: id, language, text } = document;
+  const audio = await synthesizeSpeech(id, text, language);
+  await openUploadStreamWithId(mongodb, id, audio);
+}
+
+export function openAudioStream(mongodb, id) {
+  return openDownloadStream(mongodb, id);
 }

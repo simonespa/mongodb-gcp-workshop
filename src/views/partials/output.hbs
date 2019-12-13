@@ -1,0 +1,12 @@
+<h3>Play audio version of the entered text</h3>
+<audio controls src="/play/{{textId}}">
+  Your browser does not support the <code>audio</code> element.
+</audio>
+<h3>Detected language</h3>
+<p>{{language}}</p>
+<h3>Wikipedia entities</h3>
+<ul>
+  {{#entities}}
+  <li><a href="{{url}}" target="_blank">{{name}}</a></li>
+  {{/entities}}
+</ul>
