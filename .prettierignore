@@ -1,4 +1,6 @@
 .github
+.nyc_output
+coverage
 dist
 node_modules
 .eslintcache
@@ -7,4 +9,5 @@ node_modules
 .prettierignore
 gcpcreds.json
 LICENSE
+mocha.opts
 package-lock.json

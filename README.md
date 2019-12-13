@@ -32,6 +32,10 @@ Note: in development you could also use MongoDB Community Server which can be do
 
 To build the app for production, execute `npm run build` and then `npm start` to run it.
 
+## Testing
+
+The `@babel/register` dependency is because of the nature of ES6 modules. If we want to run babel without a build step like webpack or rollup, and run babel "on the fly", we need to register Babel into Node runtime. The require hook will bind itself to Node’s require and automatically compile files on the fly.
+
 ## References
 
 - https://github.com/rbohan/MongoDBAtlas-GCP-AIMLv2
@@ -44,3 +48,4 @@ To build the app for production, execute `npm run build` and then `npm start` to
 - https://cloud.google.com/natural-language/
 - https://cloud.google.com/natural-language/docs/reference/rest/?apix=true
 - https://googleapis.dev/nodejs/language/latest/index.html
+- https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a

@@ -1,4 +1,6 @@
 .github
+.nyc_output
+coverage
 dist
 node_modules
 .babelrc
@@ -6,6 +8,7 @@ node_modules
 .eslintignore
 .prettierignore
 LICENSE
+mocha.opts
 *.yml
 *.json
 *.md
