@@ -13,7 +13,9 @@
     "build": "webpack --mode production",
     "lint": "eslint --cache --fix ./",
     "format": "prettier --write '**/*.{js,json,yml,md,hbs}' .babelrc",
-    "test": "BABEL_ENV=unittest nyc --reporter=html --reporter=text mocha --opts ./mocha.opts"
+    "pretest": "npm run lint",
+    "test": "nyc --reporter=html --reporter=text npm run test:only",
+    "test:only": "BABEL_ENV=unittest mocha --opts ./mocha.opts"
   },
   "repository": {
     "type": "git",
@@ -56,6 +58,7 @@
     "core-js": "^3.4.7",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",

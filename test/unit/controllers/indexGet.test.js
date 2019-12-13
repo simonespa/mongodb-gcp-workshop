@@ -3,22 +3,14 @@ import indexGet from '../../../src/controllers/indexGet';
 
 const sandbox = createSandbox();
 
-describe('controllers/indexGet.js', () => {
-  let request;
-  let response;
-
-  before(() => {
-    response = {
+describe('controllers/indexGet.js', function() {
+  it('should render the "index" view', function() {
+    // Given
+    let request;
+    const response = {
       status: sandbox.stub().returnsThis(),
       render: sandbox.spy()
     };
-  });
-
-  after(() => {
-    sandbox.restore();
-  });
-
-  it('should render the "index" view', () => {
     // When
     indexGet(request, response);
     // Then
@@ -27,5 +19,8 @@ describe('controllers/indexGet.js', () => {
 
     sandbox.assert.calledOnce(response.render);
     sandbox.assert.calledWithExactly(response.render, 'index');
+
+    // Cleanup
+    sandbox.restore();
   });
 });

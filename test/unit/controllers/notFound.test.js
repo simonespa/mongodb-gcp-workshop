@@ -3,20 +3,12 @@ import notFound from '../../../src/controllers/notFound';
 
 const sandbox = createSandbox();
 
-describe('controllers/notFound.js', () => {
-  let request;
-  let response;
-  let next;
-
-  before(() => {
-    next = sandbox.spy();
-  });
-
-  after(() => {
-    sandbox.restore();
-  });
-
-  it('should redirect to the error handler rendering the "Page Not Found" view', () => {
+describe('controllers/notFound.js', function() {
+  it('should redirect to the error handler rendering the "Page Not Found" view', function() {
+    // Given
+    let request;
+    let response;
+    const next = sandbox.spy();
     // When
     notFound(request, response, next);
     // Then
@@ -26,5 +18,7 @@ describe('controllers/notFound.js', () => {
       next,
       sandbox.match.has('message', 'PAGE_NOT_FOUND')
     );
+    // Cleanup
+    sandbox.restore();
   });
 });

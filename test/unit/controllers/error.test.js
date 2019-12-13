@@ -4,22 +4,22 @@ import error from '../../../src/controllers/error';
 
 const sandbox = createSandbox();
 
-describe('controllers/error.js', () => {
+describe('controllers/error.js', function() {
   let errorObj;
   let request;
   let response;
   let next;
 
-  beforeEach(() => {
+  beforeEach(function() {
     next = sandbox.spy();
   });
 
-  afterEach(() => {
+  afterEach(function() {
     sandbox.restore();
   });
 
-  describe('when the header has been already sent', () => {
-    it('should call the default Express error handler', () => {
+  describe('when the header has been already sent', function() {
+    it('should call the default Express error handler', function() {
       // Given
       errorObj = new Error();
       response = { headersSent: true };
@@ -31,8 +31,8 @@ describe('controllers/error.js', () => {
     });
   });
 
-  describe('when the header has not been sent yet', () => {
-    beforeEach(() => {
+  describe('when the header has not been sent yet', function() {
+    beforeEach(function() {
       request = {
         path: '/test/path'
       };
@@ -44,7 +44,7 @@ describe('controllers/error.js', () => {
       };
     });
 
-    it('should render the "Page Not Found" view', () => {
+    it('should render the "Page Not Found" view', function() {
       // Given
       errorObj = new Error('PAGE_NOT_FOUND');
       // When
@@ -64,7 +64,7 @@ describe('controllers/error.js', () => {
       });
     });
 
-    it('should render the "Error page" view', () => {
+    it('should render the "Error page" view', function() {
       // Given
       errorObj = new Error('anything else');
       // When
