@@ -4,7 +4,7 @@ import cacheControl from '../../../src/controllers/cacheControl';
 const sandbox = createSandbox();
 
 describe('controllers/cacheControl.js', function() {
-  it('should set the "Cache-Control" header once and call the next middleware', function() {
+  it('should set the "Cache-Control" header once and call the next middleware.', function() {
     // Given
     let request;
     const response = {
