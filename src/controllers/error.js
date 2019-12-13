@@ -14,5 +14,5 @@ export default function error(error, request, response, next) {
     response.status(500);
   }
 
-  response.render('other');
+  response.render('error');
 }
