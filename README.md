@@ -2,16 +2,18 @@
 
 [![CircleCI](https://circleci.com/gh/simonespa/mongodb-gcp-competition.svg?style=svg)](https://circleci.com/gh/simonespa/mongodb-gcp-competition)
 
-November 27 2019 - Google London - https://mdbgcp.splashthat.com/
+This is an open source proof of concept that integrates MongoDB Atlas with the GCP APIs. As part of the London MongoDB Atlas on GCP workshop competition (November 27 2019 - Google London - https://mdbgcp.splashthat.com/), I wrote an ExpressJS web app which uses the Cloud Natural Language API to detect the language and extract the Wikipedia links of the core entities of the entered text and the Cloud Text-to-Speech API to generate the audio version of it.
 
-This project runs Express server which integrates with "mongodb" and "gcp" NPM libraries. It uses the Cloud Natural Language API to return Wikipedia links of the entities extracted from the text entered by the user. The response is then stored in MongoDB Atlas which works as a caching layer. The ID of each entry is the SHA 256 fingerprint of the normalised version of the text itself (lower case, stripped of all spaces).
+For performance reasons, the entities and the generated audio are stored in MongoDB Atlas which works as a caching layer. The ID of each entry is the SHA-256 fingerprint of the normalised version of the text itself (lower case, stripped of all spaces). This makes sure that the same text is not analysed twice. Also, the web app makes use of a connection pool to communicate with MongoDB.
 
 ## Pre-requisites
 
 - Have a GCP account
-- Have the GCP Cloud Natural Language API enabled
+- Have the Cloud Natural Language and the Cloud Text-to-Speech APIs enabled
 - Have "Service Account Key" credential generated
 - Have a MongoDB Atlas account and a cluster deployed
+
+Note: in development you could use MongoDB Community Server which can be downloaded from [here](https://www.mongodb.com/download-center/community).
 
 ## Getting started
 
@@ -19,12 +21,14 @@ This project runs Express server which integrates with "mongodb" and "gcp" NPM l
 2. Download the GCP credential to the root folder of the project, in a file named `gcpcreds.json`. Without doing so, you'll get the following error: `400 undefined: Getting metadata from plugin failed with error: invalid_grant: Robot is disabled.`
 3. Export the following environment variables:
 
+- `MONGODB_URI`: the connection URI. If you use Atlas, you can get the URI by clicking the "connect" button of the Sandbox area by clicking on "Clusters" on the left-hand-side menu. If you use the Community server, the URI is `mongodb://127.0.0.1:27017/?compressors=zlib&gssapiServiceName=mongodb`
 - `MONGODB_DATABASE`: the database name
 - `MONGODB_COLLECTION`: the collection name
-- `MONGODB_URI`: the connection URI that you can get from your MongoDB Atlas account.
 
 4. Execute `npm install`
-5. Execute `npm watch` for development or `npm start` for production
+5. Execute `npm run watch` in development
+
+To build the app for production, execute `npm run build` and then `npm start` to run it.
 
 ## References
 
