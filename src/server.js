@@ -3,8 +3,8 @@ import exphbs from 'express-handlebars';
 import { MongoClient } from 'mongodb';
 import {
   cacheControl,
-  indexGet,
-  indexPost,
+  homeGet,
+  homePost,
   play,
   notFound,
   error
@@ -34,8 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cacheControl);
 
-app.get('/', indexGet);
-app.post('/', indexPost);
+app.get('/', homeGet);
+app.post('/', homePost);
 app.get('/play/:id', play);
 app.get('*', notFound);
 

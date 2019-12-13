@@ -5,7 +5,7 @@ import {
   generateAndStoreAudioToCache
 } from '../helper';
 
-export default async function indexPost(request, response, next) {
+export default async function homePost(request, response, next) {
   const { text } = request.body;
   const { mongodb } = request.app.locals;
 
@@ -22,7 +22,7 @@ export default async function indexPost(request, response, next) {
     response.locals.textId = id;
     response.locals.language = document.language;
     response.locals.entities = document.entities;
-    response.status(200).render('index');
+    response.status(200).render('home');
   } catch (error) {
     next(error);
   }
