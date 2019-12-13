@@ -1,0 +1,13 @@
+name: Lint
+
+on: pull_request
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Run ESLint
+        uses: stefanoeb/eslint-action@1.0.0
