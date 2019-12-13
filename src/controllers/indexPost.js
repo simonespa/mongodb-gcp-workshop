@@ -6,11 +6,11 @@ import {
 } from '../helper';
 
 export default async function indexPost(request, response, next) {
-  const { text } = request.body;
-  const { mongodb } = request.app.locals;
-
   try {
+    const { text } = request.body;
+    const { mongodb } = request.app.locals;
     const id = getId(text);
+
     let document = await getDocumentFromCache(mongodb, id);
 
     if (!document) {

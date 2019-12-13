@@ -1,16 +1,28 @@
-import { createSandbox } from 'sinon';
+// import { createSandbox } from 'sinon';
+// import indexPost from '../../../src/controllers/indexPost';
 
-const sandbox = createSandbox();
+// const sandbox = createSandbox();
 
-describe('controllers/indexPost.js', function() {
-  it('should ...', function() {
-    // Given
+// describe('controllers/indexPost.js', function() {
+//   describe('not cached', () => {
+//     it('does not throw');
 
-    // When
+//     it('throw an error');
+//   });
 
-    // Then
+//   describe('cached content', () => {
+//     describe('ok', () => {
+//     describe('throw an error', () => {
+//   });
 
-    // Cleanup
-    sandbox.restore();
-  });
-});
+//   it('should clean', async function() {
+//     // Given
+
+//     // When
+//     await indexPost(request, response, next);
+//     // Then
+
+//     // Cleanup
+//     sandbox.restore();
+//   });
+// });
