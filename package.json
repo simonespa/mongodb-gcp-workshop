@@ -8,7 +8,7 @@
     "watch": "GOOGLE_APPLICATION_CREDENTIALS=./gcpcreds.json webpack --mode development --watch",
     "build": "webpack --mode production",
     "lint": "eslint --cache --fix ./",
-    "format": "prettier --write '**/*.{js,json,yml,md}' .babelrc",
+    "format": "prettier --write '**/*.{js,json,yml,md,hbs}' .babelrc",
     "pretest": "npm run lint",
     "test": "echo test"
   },

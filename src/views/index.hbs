@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {{> commonHeaders }}
-  <title>Text Analyser | Home</title>
-</head>
-<body>
-  <h1>Text Analyser</h1>
-  <p>Paste the text you want to analyse here.</p>
-  <form method="POST" action="/">
-    <textarea name="text" id="" cols="100" rows="20"></textarea>
-    <div />
-    <input type="submit" />
-  </form>
-  <h3>Play text</h3>
-  <audio controls src="/play/{{textId}}">
-    Your browser does not support the <code>audio</code> element.
-  </audio>
-  <h3>Detected language</h3>
-  <p>{{language}}</p>
-  <h3>Wikipedia entities</h3>
-  <ul>
-    {{#entities}}
-      <li><a href="{{url}}" target="_blank">{{name}}</a></li>
-    {{/entities}}
-  </ul>
-</body>
+  <head>
+    {{> commonHeaders }}
+    <title>Text Analyser | Home</title>
+  </head>
+  <body>
+    <h1>Text Analyser</h1>
+
+    {{#unless textId}} {{> input }} {{else}} {{> output }} {{/unless}}
+  </body>
 </html>

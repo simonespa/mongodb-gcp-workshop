@@ -1,7 +1,5 @@
 import { LanguageServiceClient } from '@google-cloud/language';
 import { TextToSpeechClient } from '@google-cloud/text-to-speech';
-import fs from 'fs';
-import util from 'util';
 
 const type = 'PLAIN_TEXT';
 
@@ -11,7 +9,7 @@ const type = 'PLAIN_TEXT';
  * @param {string} content the text to analyze
  * @returns {object}
  */
-export async function analyzeEntitiesFromText(content) {
+export async function analyzeEntities(content) {
   // Creates a client
   const client = new LanguageServiceClient();
 
@@ -38,7 +36,7 @@ export async function analyzeEntitiesFromText(content) {
   return { language, entities: wikipediaEntities };
 }
 
-export async function synthesizeSpeech() {
+export async function synthesizeSpeech(id, text, languageCode) {
   // Creates a client
   const client = new TextToSpeechClient();
 
@@ -46,18 +44,13 @@ export async function synthesizeSpeech() {
   const request = {
     input: { text },
     // Select the language and SSML Voice Gender (optional)
-    voice: { languageCode: 'en', ssmlGender: 'NEUTRAL' },
+    voice: { languageCode, ssmlGender: 'NEUTRAL' },
     // Select the type of audio encoding
     audioConfig: { audioEncoding: 'MP3' }
   };
 
   // Performs the Text-to-Speech request
   const [response] = await client.synthesizeSpeech(request);
-  // Write the binary audio content to a local file
-  const writeFile = util.promisify(fs.writeFile);
-  await writeFile(
-    `/tmp/${document['_id']}.mp3`,
-    response.audioContent,
-    'binary'
-  );
+
+  return response.audioContent;
 }

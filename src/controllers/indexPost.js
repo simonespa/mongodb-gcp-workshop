@@ -1,18 +1,21 @@
-import { getId, getDocumentFromCache, storeDocumentToCache } from '../helper';
+import {
+  getId,
+  getDocumentFromCache,
+  storeDocumentToCache,
+  generateAndStoreAudioToCache
+} from '../helper';
 
 export default async function indexPost(request, response, next) {
   const { text } = request.body;
+  const { mongodb } = request.app.locals;
 
   try {
     const id = getId(text);
-    let document = await getDocumentFromCache(request.app.locals.mongodb, id);
+    let document = await getDocumentFromCache(mongodb, id);
 
     if (!document) {
-      document = await storeDocumentToCache(
-        request.app.locals.mongodb,
-        id,
-        text
-      );
+      document = await storeDocumentToCache(mongodb, id, text);
+      await generateAndStoreAudioToCache(mongodb, document);
     }
 
     response.locals.text = text;

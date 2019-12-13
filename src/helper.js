@@ -1,6 +1,11 @@
 import crypto from 'crypto';
-import { analyzeEntitiesFromText } from './gcp';
-import { findDocumentById, insertDocument } from './mongodb';
+import { analyzeEntities, synthesizeSpeech } from './gcp';
+import {
+  findDocumentById,
+  insertDocument,
+  openUploadStreamWithId,
+  openDownloadStream
+} from './mongodb';
 
 export function getId(text) {
   return crypto
@@ -20,31 +25,17 @@ export async function getDocumentFromCache(mongodb, id) {
 }
 
 export async function storeDocumentToCache(mongodb, id, text) {
-  const { language, entities } = await analyzeEntitiesFromText(text);
-  const document = { _id: id, language, entities };
+  const { language, entities } = await analyzeEntities(text);
+  const document = { _id: id, language, entities, text };
   return await insertDocument(mongodb, document);
 }
 
-export async function storeAudioToCache(mongodb, id, audio) {
-  // Creates a client
-  const client = new TextToSpeechClient();
+export async function generateAndStoreAudioToCache(mongodb, document) {
+  const { _id: id, language, text } = document;
+  const audio = await synthesizeSpeech(id, text, language);
+  await openUploadStreamWithId(mongodb, id, audio);
+}
 
-  // Construct the request
-  const gcpRequest = {
-    input: { text },
-    // Select the language and SSML Voice Gender (optional)
-    voice: { languageCode: 'en', ssmlGender: 'NEUTRAL' },
-    // Select the type of audio encoding
-    audioConfig: { audioEncoding: 'MP3' }
-  };
-
-  // Performs the Text-to-Speech request
-  const [gcpResponse] = await client.synthesizeSpeech(gcpRequest);
-  // Write the binary audio content to a local file
-  const writeFile = util.promisify(fs.writeFile);
-  await writeFile(
-    `/tmp/${document['_id']}.mp3`,
-    gcpResponse.audioContent,
-    'binary'
-  );
+export function openAudioStream(mongodb, id) {
+  return openDownloadStream(mongodb, id);
 }
