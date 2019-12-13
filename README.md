@@ -1,6 +1,6 @@
 # London MongoDB Atlas on GCP workshop competition
 
-[![CircleCI](https://circleci.com/gh/simonespa/mongodb-gcp-competition.svg?style=svg)](https://circleci.com/gh/simonespa/mongodb-gcp-competition)
+[![CircleCI](https://circleci.com/gh/simonespa/mongodb-gcp-competition.svg?style=svg)](https://circleci.com/gh/simonespa/mongodb-gcp-competition) [![BCH compliance](https://bettercodehub.com/edge/badge/simonespa/mongodb-gcp-competition?branch=master)](https://bettercodehub.com/)
 
 This is an open source proof of concept that integrates [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) with the [Google Cloud Platform APIs](https://cloud.google.com/apis) as part of the [London MongoDB Atlas on GCP workshop](https://mdbgcp.splashthat.com) competition (November 27 2019 - Google London).
 
