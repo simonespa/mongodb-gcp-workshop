@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/simonespa/mongodb-gcp-competition.svg?style=svg)](https://circleci.com/gh/simonespa/mongodb-gcp-competition)
 
-This is an open source proof of concept that integrates [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) with the [Google Cloud Platform](https://cloud.google.com/) APIs as part of the [London MongoDB Atlas on GCP workshop](https://mdbgcp.splashthat.com) competition (November 27 2019 - Google London).
+This is an open source proof of concept that integrates [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) with the [Google Cloud Platform APIs](https://cloud.google.com/apis) as part of the [London MongoDB Atlas on GCP workshop](https://mdbgcp.splashthat.com) competition (November 27 2019 - Google London).
 
 The web app is an ExpressJS server which uses the GCP Cloud Natural Language API to detect the language and extract the Wikipedia links of the core entities of the entered text and the Cloud Text-to-Speech API to generate the audio version of it.
 
