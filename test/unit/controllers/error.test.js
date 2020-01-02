@@ -53,7 +53,7 @@ describe('controllers/error.js', function() {
       sandbox.assert.notCalled(next);
 
       sandbox.assert.calledOnce(response.render);
-      sandbox.assert.calledWithExactly(response.render, 'other');
+      sandbox.assert.calledWithExactly(response.render, 'error');
 
       sandbox.assert.calledOnce(response.status);
       sandbox.assert.calledWithExactly(response.status, 404);
@@ -73,7 +73,7 @@ describe('controllers/error.js', function() {
       sandbox.assert.notCalled(next);
 
       sandbox.assert.calledOnce(response.render);
-      sandbox.assert.calledWithExactly(response.render, 'other');
+      sandbox.assert.calledWithExactly(response.render, 'error');
 
       sandbox.assert.calledOnce(response.status);
       sandbox.assert.calledWithExactly(response.status, 500);
