@@ -1,12 +1,14 @@
 import express from 'express';
 import exphbs from 'express-handlebars';
 import { MongoClient } from 'mongodb';
-import cacheControl from './controllers/cacheControl';
-import indexGet from './controllers/indexGet';
-import indexPost from './controllers/indexPost';
-import play from './controllers/play';
-import notFound from './controllers/notFound';
-import error from './controllers/error';
+import {
+  cacheControl,
+  homeGet,
+  homePost,
+  play,
+  notFound,
+  error
+} from './controllers';
 
 const app = express();
 const port = 8088;
@@ -32,8 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cacheControl);
 
-app.get('/', indexGet);
-app.post('/', indexPost);
+app.get('/', homeGet);
+app.post('/', homePost);
 app.get('/play/:id', play);
 app.get('*', notFound);
 

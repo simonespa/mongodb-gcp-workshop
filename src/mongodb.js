@@ -30,14 +30,16 @@ export async function openUploadStreamWithId(mongodb, id, audio) {
 
   await writeFile(filePath, audio, 'binary');
 
-  fs.createReadStream(filePath)
-    .pipe(bucket.openUploadStreamWithId(id, `${id}.mp3`))
-    .on('error', (error) => {
-      Promise.reject(error);
-    })
-    .on('finish', () => {
-      Promise.resolve();
-    });
+  return new Promise((resolve, reject) => {
+    fs.createReadStream(filePath)
+      .pipe(bucket.openUploadStreamWithId(id, `${id}.mp3`))
+      .on('error', (error) => {
+        reject(error);
+      })
+      .on('finish', () => {
+        resolve();
+      });
+  });
 }
 
 export function openDownloadStream(mongodb, id) {
