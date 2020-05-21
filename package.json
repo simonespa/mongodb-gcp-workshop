@@ -57,7 +57,7 @@
     "nodemon-webpack-plugin": "^4.2.2",
     "prettier": "^1.19.1",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
+    "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
   },
   "husky": {
