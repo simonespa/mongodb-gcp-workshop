@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/simonespa/mongodb-gcp-competition#readme",
   "dependencies": {
-    "@google-cloud/language": "^3.6.2",
+    "@google-cloud/language": "^4.0.1",
     "@google-cloud/text-to-speech": "^2.0.2",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
