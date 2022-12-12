@@ -12,7 +12,7 @@ module.exports = (env, options) => {
     output: {
       filename: 'server.js',
       path: path.resolve(__dirname, 'dist'),
-      libraryTarget: 'commonjs2'
+      libraryTarget: 'commonjs2',
     },
     externals: [nodeExternals()],
     devtool: false,
@@ -21,22 +21,22 @@ module.exports = (env, options) => {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
-        }
-      ]
+          use: 'babel-loader',
+        },
+      ],
     },
     plugins: [
       new CleanWebpackPlugin({
-        verbose: true
-      })
-    ]
+        verbose: true,
+      }),
+    ],
   };
 
   if (isDevMode) {
     webpackConfig.plugins.push(
       new NodemonPlugin({
         watch: path.resolve(__dirname, 'dist'),
-        script: './dist/server.js'
+        script: './dist/server.js',
       })
     );
   }
