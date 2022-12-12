@@ -2,7 +2,7 @@ import {
   getId,
   getDocumentFromCache,
   storeDocumentToCache,
-  generateAndStoreAudioToCache
+  generateAndStoreAudioToCache,
 } from '../helper';
 
 export default async function homePost(request, response, next) {
