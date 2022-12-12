@@ -8,6 +8,20 @@ The web app is an ExpressJS server which uses the GCP Cloud Natural Language API
 
 For performance reasons the response from both GCP APIs are stored in MongoDB Atlas which works as a caching layer. The ID of each entry is the SHA-256 fingerprint of the normalised version (lower case, stripped of all spaces) of the text itself. This makes sure that the same text is not analysed twice. Also, the web app makes use of a connection pool to communicate with MongoDB.
 
+## The competition
+
+This project was chosen as the winning application. First prize: the Google Stadia controller with 1 month free subscription.
+
+In the words of judge - Jim Blackhurst, Principal Solution Architect
+
+> "I think Simone's work is brilliant, and way beyond what we expected to see. He's really run with the idea and take the prototype in a new direction. The use of the GCP Language API to mine Wikipedia for even greater context really has some exciting implications for a deeper level of metadata tagging. The use of the Text to Speech API, which on the surface might just seem to be a bolt-on idea, actually has a lot of relevance towards providing applications with innovative interfaces, and as such demonstrates how this might feel when used through personal assistants such as Google Home or Amazon Echo.
+>
+> On top of this, Simone shows all the best practices around the use of MongoDB and JS, CI/CD and Git, which is not something we were really focused on but demonstrates to me the level of thought that has gone into this.
+>
+> We (the judging panel) have no hesitation in putting Simone's work forward as our winner!
+>
+> Well done Simone, and Merry Christmas!"
+
 ## Pre-requisites
 
 - Have a GCP account

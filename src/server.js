@@ -7,7 +7,7 @@ import {
   homePost,
   play,
   notFound,
-  error
+  error,
 } from './controllers';
 
 const app = express();
@@ -20,7 +20,7 @@ app.disable('x-powered-by');
 app.engine(
   'hbs',
   exphbs({
-    extname: 'hbs'
+    extname: 'hbs',
   })
 );
 app.set('view engine', 'hbs');
@@ -49,7 +49,7 @@ app.listen(port, async (error) => {
   try {
     app.locals.mongodb = await MongoClient.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
     console.info(`Listening on port ${port}`);
   } catch (e) {
