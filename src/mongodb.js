@@ -16,10 +16,7 @@ export async function findDocumentById(mongodb, documentId) {
 }
 
 export async function insertDocument(mongodb, document) {
-  await mongodb
-    .db(DATABASE)
-    .collection(COLLECTION)
-    .insertOne(document);
+  await mongodb.db(DATABASE).collection(COLLECTION).insertOne(document);
   return document;
 }
 
@@ -46,7 +43,7 @@ export function openDownloadStream(mongodb, id) {
   const db = mongodb.db(DATABASE);
   const bucket = new GridFSBucket(db, {
     chunkSizeBytes: 1024,
-    bucketName
+    bucketName,
   });
 
   return bucket.openDownloadStream(id);

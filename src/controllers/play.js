@@ -7,7 +7,7 @@ export default function play(request, response) {
     openAudioStream(mongodb, id).pipe(response);
   } catch (error) {
     response.json({
-      error: error.message
+      error: error.message,
     });
   }
 }

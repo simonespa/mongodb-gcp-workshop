@@ -30,7 +30,7 @@ export async function analyzeEntities(content) {
     )
     .map((entity) => ({
       name: entity.name,
-      url: entity.metadata.wikipedia_url
+      url: entity.metadata.wikipedia_url,
     }));
 
   return { language, entities: wikipediaEntities };
@@ -46,7 +46,7 @@ export async function synthesizeSpeech(id, text, languageCode) {
     // Select the language and SSML Voice Gender (optional)
     voice: { languageCode, ssmlGender: 'NEUTRAL' },
     // Select the type of audio encoding
-    audioConfig: { audioEncoding: 'MP3' }
+    audioConfig: { audioEncoding: 'MP3' },
   };
 
   // Performs the Text-to-Speech request
